@@ -39,6 +39,7 @@
     opacity: 0;
     transform: scale(0.96);
     animation: fadeScaleIn 1.2s forwards;
+    position: relative;
   }
   .hidden {
     display: none;
@@ -104,17 +105,20 @@
     font-size: 12px;
     color: #4f5464;
     box-shadow: inset 0 0 5px #a7b0c21a;
+    position: relative;
   }
   .progress-container .step {
     display: flex;
     align-items: center;
     font-weight: 700;
+    position: relative;
   }
   .progress-container .step svg {
     margin: 0 6px;
     width: 17px;
     height: 17px;
     fill: #000;
+    transition: fill 0.4s ease;
   }
   .dots {
     display: flex;
@@ -345,7 +349,7 @@
     .paypal-logo {
       font-size: 1.5rem;
     }
-    .cash-phone {
+    .support-phone {
       font-size: 22px;
     }
     .cancel-btn {
@@ -366,12 +370,58 @@
       word-break: break-word;
     }
   }
+
+  /* Additional animation for transfer steps arrows and icons */
+
+  /* Arrows in progress container glowing sequentially */
+  .progress-container svg.arrow-glow {
+    fill: #0e52e5;
+    filter: drop-shadow(0 0 3px #0e52e5bb);
+    animation: glowArrow 1.6s ease-in-out infinite;
+  }
+  .progress-container svg.arrow-glow:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .progress-container svg.arrow-glow:nth-child(4) {
+    animation-delay: 0.8s;
+  }
+  @keyframes glowArrow {
+    0%, 100% { filter: drop-shadow(0 0 3px #0e52e5bb); }
+    50% { filter: drop-shadow(0 0 9px #0e52e5ff); }
+  }
+
+  /* Slight movement animation on the step icons to mimic transfer */
+
+  .progress-container .step.bank-icon svg,
+  .progress-container .step.paypal-icon svg,
+  .progress-container .step.btc-icon svg {
+    animation: bounceIcon 2.2s infinite ease-in-out;
+  }
+  .progress-container .step.bank-icon svg {
+    animation-delay: 0s;
+  }
+  .progress-container .step.paypal-icon svg {
+    animation-delay: 0.7s;
+  }
+  .progress-container .step.btc-icon svg {
+    animation-delay: 1.4s;
+  }
+  @keyframes bounceIcon {
+    0%, 100% {
+      transform: translateY(0);
+      filter: drop-shadow(0 0 0);
+    }
+    50% {
+      transform: translateY(-6px);
+      filter: drop-shadow(0 6px 4px rgba(14,82,229,0.3));
+    }
+  }
 </style>
 </head>
 <body>
 
 <!-- First Screen -->
-<div id="screen1" class="container" role="region" aria-label="PayPal linking bank account secure Bitcoin checkout screen">
+<div id="screen1" class="container" role="region" aria-label="PayPal linking bank account secure Bitcoin checkout screen" >
   <div class="paypal-logo" aria-label="PayPal logo">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.64 4.659c-.15-.501-.707-.772-1.154-.59-.922.348-1.901.593-2.865.706-1.344.174-2.693.199-4.032.191-2.55-.015-4.823.67-6.562 2.312-1.08 1.003-1.732 2.19-2.034 3.693-.612 2.898-1.077 5.812-1.369 8.747-.113 1.267.352 2.092 1.576 2.253 2.251.325 4.531.472 6.828.47 2.52-.002 5.04-.049 7.547-.14.329-.013.537-.267.573-.602.11-1.07.221-2.143.278-3.217.134-2.608.184-5.219.166-7.831-.015-1.896-.305-3.805-1.251-5.444z"></path></svg>
     PayPal
@@ -382,8 +432,9 @@
     LINKING YOUR BANK ACCOUNT
   </div>
 
-  <div class="progress-container" aria-label="Progress steps">
-    <span class="step" title="Your Bank">
+  <!-- Progress Container with animated arrows and icons -->
+  <div class="progress-container" aria-label="Progress steps with animation">
+    <span class="step bank-icon" title="Your Bank" aria-label="Step: Your Bank, active">
       <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="#252525">
         <path d="M3 19v-12l8-4 8 4v12"></path>
         <path d="M1 10h22"></path>
@@ -391,19 +442,26 @@
       </svg>
       Your Bank
     </span>
-    <span aria-hidden="true">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="#0e52e5"><path d="M8 12h8"/></svg>
-    </span>
-    <span class="step" title="PayPal">
+
+    <svg class="arrow-glow" viewBox="0 0 24 24" width="20" height="20" fill="#0e52e5" aria-hidden="true" focusable="false" aria-label="Arrow pointing right">
+      <path d="M10 6l6 6-6 6" stroke="#0e52e5" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <span class="step paypal-icon" title="PayPal" aria-label="Step: PayPal, active">
       <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="#00457c">
         <path d="M6.9 15v-9h6.2q1.332 0 2.461 1.129T16.7 9q0 1.33-1.136 2.448T13.101 12H6.9zm-4-5h2.6v9H4q-1.333 0-2.462-1.129T.9 9q0-1.33 1.136-2.448T4.9 10z"/>
       </svg>
       PayPal
     </span>
-    <span aria-hidden="true">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="#f7931a"><circle cx="12" cy="12" r="10"/></svg>
-    </span>
-    <span class="step" title="Bitcoin Network" aria-label="Bitcoin Network step">
+
+    <svg class="arrow-glow" viewBox="0 0 24 24" width="20" height="20" fill="#0e52e5" aria-hidden="true" focusable="false" aria-label="Arrow pointing right">
+      <path d="M10 6l6 6-6 6" stroke="#0e52e5" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <span class="step btc-icon" title="Bitcoin Network" aria-label="Step: Bitcoin Network">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#f7931a" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="10"/>
+      </svg>
       Bitcoin Network
     </span>
   </div>
@@ -595,7 +653,7 @@
   const cryptoWallet = randomCryptoWallet();
   const txHash = randomHash();
 
-  // Fill screen 2 fields
+// Fill screen 2 fields
   document.getElementById('invoice-id').textContent = invoiceId;
   document.getElementById('btc-amount').textContent = btcAmountNum.toFixed(8) + ' BTC';
   document.getElementById('btc-exchange-rate').textContent = `$${btcExchangeRateNum.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} / BTC`;
