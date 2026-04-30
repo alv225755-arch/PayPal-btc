@@ -14,273 +14,356 @@
     margin: 0; padding: 0;
     width: 100%; height: 100%;
     font-family: 'Roboto', sans-serif;
-    background: #f2f2ff;
+    background: #eff0fa;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    user-select: none;
   }
   .container {
-    width: 350px;
+    width: 400px;
     max-width: 95vw;
-    height: 425px;
+    height: 485px;
     max-height: 90vh;
     background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 12px 24px #a1a7b3c7;
-    padding: 20px 25px 30px;
+    border-radius: 20px;
+    box-shadow: 0 14px 32px #8a9abd80;
+    padding: 25px 30px 35px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    user-select: none;
     overflow-wrap: break-word;
+    /* Animate fade in with scale from smaller */
+    opacity: 0;
+    transform: scale(0.96);
+    animation: fadeScaleIn 1.2s forwards;
   }
   .hidden {
     display: none;
   }
+  @keyframes fadeScaleIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
   .paypal-logo {
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     color: #00457c;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
   }
   .paypal-logo svg {
-    margin-right: 6px;
-    width: 26px;
-    height: 26px;
+    margin-right: 8px;
+    width: 30px;
+    height: 30px;
     fill: #00457c;
   }
   .subtitle {
-    font-size: 10px;
-    color: #6e7480;
-    margin-bottom: 13px;
+    font-size: 11px;
+    color: #5a6071;
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
   }
   .linking-badge {
-    font-size: 10px;
-    color: #1877f2;
-    background: #dae6ff;
-    padding: 3px 8px;
-    border-radius: 12px;
-    margin-bottom: 14px;
+    font-size: 11px;
+    color: #0e52e5;
+    background: #d9e2ff;
+    padding: 4px 12px;
+    border-radius: 14px;
+    margin-bottom: 18px;
     display: inline-flex;
     align-items: center;
+    font-weight: 600;
+    filter: drop-shadow(0 0 1.4px #0e52e580);
   }
   .linking-badge svg {
-    margin-right: 5px;
-    width: 12px;
-    height: 12px;
-    fill: #1877f2;
-    animation: rotation 2s linear infinite;
+    margin-right: 6px;
+    width: 14px;
+    height: 14px;
+    fill: #0e52e5;
+    animation: rotation 2.5s linear infinite;
   }
   @keyframes rotation {
     from {transform: rotate(0deg);}
     to {transform: rotate(360deg);}
   }
   .progress-container {
-    background: #f8f9fb;
-    border-radius: 10px;
+    background: #f4f6fc;
+    border-radius: 14px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 8px 12px;
-    margin-bottom: 8px;
-    font-size: 11px;
-    color: #494b59;
+    padding: 12px 17px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #4f5464;
+    box-shadow: inset 0 0 5px #a7b0c21a;
   }
   .progress-container .step {
     display: flex;
     align-items: center;
-    font-weight: 600;
+    font-weight: 700;
   }
   .progress-container .step svg {
-    margin: 0 5px;
-    width: 14px;
-    height: 14px;
+    margin: 0 6px;
+    width: 17px;
+    height: 17px;
     fill: #000;
   }
   .dots {
     display: flex;
     justify-content: center;
-    gap: 5px;
-    margin-bottom: 10px;
+    gap: 7px;
+    margin-bottom: 14px;
   }
   .dots div {
-    width: 7px; height: 7px;
-    background: #9eafdc;
+    width: 9px; height: 9px;
+    background: #b7c1e5;
     border-radius: 50%;
+    transition: background-color 0.3s;
   }
   .dots .active {
-    background: #2e68ec;
+    background: #0e52e5;
+    box-shadow: 0 0 9px #0e52e5aa;
+    animation: pulseDot 2.5s infinite;
+  }
+  @keyframes pulseDot {
+    0%, 100% { box-shadow: 0 0 9px #0e52e5aa; }
+    50% { box-shadow: 0 0 15px #0e52e5cc; }
   }
   .ssl-text {
-    font-size: 8px;
-    color: #888d97;
-    margin-bottom: 15px;
+    font-size: 9px;
+    color: #7e8391;
+    margin-bottom: 20px;
+    font-style: italic;
   }
   .timestamp {
-    font-size: 10px;
-    color: #828797;
-    font-weight: 500;
-    margin-bottom: 3px;
+    font-size: 12px;
+    color: #5a6071;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.025em;
   }
   .timestamp small {
     font-weight: 300;
-    color: #b2b5bd;
+    color: #9aa0b8;
     display: block;
+    margin-bottom: 4px;
   }
   .support-container {
     margin-top: auto;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     color: #03468b;
   }
   .support-phone {
-    font-size: 22px;
-    margin: 5px 0 3px 0;
+    font-size: 26px;
+    margin: 8px 0 5px 0;
     user-select: all;
+    letter-spacing: 0.04em;
+    font-weight: 900;
   }
   .support-sub {
-    font-size: 9px;
-    font-weight: 400;
-    color: #4a515f;
-    margin-bottom: 3px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #48515e;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
   .support-bottom {
-    font-size: 10px;
-    color: #8f9298;
+    font-size: 11px;
+    color: #7e8391;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .support-bottom svg {
     vertical-align: middle;
-    margin-right: 3px;
+    margin-right: 6px;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
   }
-
   /* Second Screen */
   .blue-top-bar {
-    background: #0d4eb7;
-    height: 8px;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    background: #0b49b2;
+    height: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
   .invoice-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 6px 14px;
-    font-size: 14px;
+    padding: 8px 18px;
+    font-size: 16px;
     font-weight: 700;
-    color: #202124;
+    color: #22262f;
+    letter-spacing: 0.04em;
   }
   .invoice-header .btc-icon {
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
     vertical-align: middle;
   }
   .invoice-header .confirmed-badge {
-    background: #dff2ec;
-    color: #006a3c;
-    font-weight: 600;
-    font-size: 11px;
-    border-radius: 14px;
-    padding: 1px 10px;
+    background: #d9f4e4;
+    color: #0a6b2f;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 18px;
+    padding: 3px 15px;
     user-select: none;
+    box-shadow: 0 0 8px #0a6b2f2b;
   }
   .invoice-body {
-    padding: 12px 20px 20px 20px;
-    font-size: 12px;
-    color: #202124;
+    padding: 15px 25px 25px 25px;
+    font-size: 13px;
+    color: #22262f;
+    line-height: 1.5em;
   }
   .invoice-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: 11px;
     overflow-wrap: anywhere;
   }
   .label {
     font-weight: 600;
-    color: #1e1f25;
-    max-width: 45%;
+    color: #212529;
+    max-width: 48%;
     text-align: left;
   }
   .value {
     max-width: 50%;
     text-align: right;
     white-space: nowrap;
+    font-weight: 600;
+    color: #272b31;
   }
   .value.small-text {
-    font-size: 10px;
-    color: #474a52;
+    font-weight: 400;
+    font-size: 11px;
+    color: #444b5e;
   }
   .highlight-green {
-    background: #e2f1df;
-    color: #006a3c;
-    font-weight: 600;
-    font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 14px;
+    background: #e3f2de;
+    color: #0a6b2f;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 4px 13px;
+    border-radius: 18px;
     display: inline-flex;
     align-items: center;
+    box-shadow: 0 0 10px #0a6b2f40;
   }
   .highlight-green svg {
-    width: 12px;
-    height: 12px;
-    margin-right: 5px;
-    fill: #006a3c;
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+    fill: #0a6b2f;
   }
   .cancel-section {
-    margin-top: 14px;
+    margin-top: 22px;
     text-align: center;
   }
   .cancel-btn {
     width: 100%;
-    border: 1px solid #bd2349;
-    color: #bd2349;
-    font-weight: 700;
-    font-size: 13px;
-    border-radius: 18px;
-    padding: 8px 6px;
+    border: 2px solid #b42248;
+    color: #b42248;
+    font-weight: 800;
+    font-size: 14px;
+    border-radius: 24px;
+    padding: 10px 0;
     background: white;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    user-select: none;
+    box-shadow: 0 0 10px #b4224850;
   }
-  .cancel-btn:hover {
-    background: #bd2349;
+  .cancel-btn:hover, .cancel-btn:focus {
+    background: #b42248;
     color: white;
+    box-shadow: 0 0 16px #b4224866;
+    outline: none;
+  }
+  .cancel-btn:active {
+    transform: scale(0.97);
   }
   .support-refund {
-    font-size: 10px;
-    margin-top: 6px;
-    color: #bd2349;
-    font-weight: 600;
+    font-size: 11px;
+    margin-top: 8px;
+    color: #b42248;
+    font-weight: 700;
+    user-select: none;
   }
   .footer-note {
-    font-size: 9px;
-    color: #7b7b7b;
-    margin-top: 6px;
+    font-size: 10px;
+    color: #666b74;
+    margin-top: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.02em;
   }
   .footer-note svg {
     vertical-align: middle;
-    margin-right: 4px;
+    margin-right: 6px;
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
   }
 
-  /* Icons for phone and bitcoin */
-  @media (max-width: 400px) {
-    .container {
-      width: 90vw;
-      height: auto;
+  /* Button animation on load */
+  .cancel-btn {
+    animation: pulseCancelBtn 3s infinite ease-in-out 1.5s;
+  }
+  @keyframes pulseCancelBtn {
+    0%, 100% {
+      box-shadow: 0 0 10px #b4224850;
     }
-    .invoice-body, .progress-container {
-      font-size: 10px;
+    50% {
+      box-shadow: 0 0 20px #b42248cc;
+    }
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 450px) {
+    .container {
+      width: 96vw;
+      height: auto;
+      padding: 20px 20px 30px;
+    }
+    .paypal-logo {
+      font-size: 1.5rem;
+    }
+    .cash-phone {
+      font-size: 22px;
+    }
+    .cancel-btn {
+      font-size: 13px;
+      padding: 9px 0;
+    }
+    .invoice-body {
+      font-size: 12px;
+      padding: 15px 18px 20px 18px;
     }
     .label {
       max-width: 50%;
     }
     .value {
-      max-width: 45%;
+      max-width: 48%;
+      white-space: normal;
+      text-align: right;
+      word-break: break-word;
     }
   }
 </style>
@@ -288,28 +371,28 @@
 <body>
 
 <!-- First Screen -->
-<div id="screen1" class="container">
-  <div class="paypal-logo">
+<div id="screen1" class="container" role="region" aria-label="PayPal linking bank account secure Bitcoin checkout screen">
+  <div class="paypal-logo" aria-label="PayPal logo">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.64 4.659c-.15-.501-.707-.772-1.154-.59-.922.348-1.901.593-2.865.706-1.344.174-2.693.199-4.032.191-2.55-.015-4.823.67-6.562 2.312-1.08 1.003-1.732 2.19-2.034 3.693-.612 2.898-1.077 5.812-1.369 8.747-.113 1.267.352 2.092 1.576 2.253 2.251.325 4.531.472 6.828.47 2.52-.002 5.04-.049 7.547-.14.329-.013.537-.267.573-.602.11-1.07.221-2.143.278-3.217.134-2.608.184-5.219.166-7.831-.015-1.896-.305-3.805-1.251-5.444z"></path></svg>
     PayPal
   </div>
   <div class="subtitle">Secure Bitcoin checkout · Instant settlement</div>
-  <div class="linking-badge">
+  <div class="linking-badge" aria-live="polite" aria-atomic="true" aria-relevant="text">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 0L12 24M0 12L24 12" /></svg>
     LINKING YOUR BANK ACCOUNT
   </div>
 
   <div class="progress-container" aria-label="Progress steps">
     <span class="step" title="Your Bank">
-      <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="#252525">
         <path d="M3 19v-12l8-4 8 4v12"></path>
         <path d="M1 10h22"></path>
         <path d="M16 21a2 2 0 1 1-4 0"></path>
       </svg>
       Your Bank
     </span>
-    <span>
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="#1877f2"><path d="M8 12h8"/></svg>
+    <span aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#0e52e5"><path d="M8 12h8"/></svg>
     </span>
     <span class="step" title="PayPal">
       <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="#00457c">
@@ -317,10 +400,10 @@
       </svg>
       PayPal
     </span>
-    <span>
+    <span aria-hidden="true">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="#f7931a"><circle cx="12" cy="12" r="10"/></svg>
     </span>
-    <span class="step" title="Bitcoin Network">
+    <span class="step" title="Bitcoin Network" aria-label="Bitcoin Network step">
       Bitcoin Network
     </span>
   </div>
@@ -331,8 +414,8 @@
     <div></div>
   </div>
 
-  <div class="ssl-text">
-    &#128274; 256-bit SSL · Establishing secure connection
+  <div class="ssl-text" aria-label="Secure SSL connection information">
+    🔒 256-bit SSL · Establishing secure connection
   </div>
 
   <div class="timestamp" aria-live="polite">
@@ -341,30 +424,36 @@
     <small>PayPal - Bitcoin rate locked</small>
   </div>
 
-  <div class="support-container" aria-label="Support helpline">
+  <div class="support-container" aria-label="24 by 7 support helpline">
     <div><strong>24/7 SUPPORT HELPLINE</strong></div>
-    <div class="support-phone" aria-label="Phone number to call">1 800 800 800</div>
+    <div class="support-phone" aria-label="Support phone number to call">1 800 800 800</div>
     <div class="support-sub">Call immediately if you didn't authorize this transaction</div>
     <div class="support-bottom">
-      <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="#6e7480"><path d="M21 15.46v2.55a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 6 2.53h2.55a1.99 1.99 0 0 1 2 1.72c.13 1.21.39 2.38.77 3.5a1.99 1.99 0 0 1-.45 2.11L9.91 11a16 16 0 0 0 6 6l.38-.38a1.99 1.99 0 0 1 2.12-.44 12.49 12.49 0 0 0 3.5.78 1.99 1.99 0 0 1 1.72 2z"></path></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="#5a6071"><path d="M21 15.46v2.55a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 6 2.53h2.55a1.99 1.99 0 0 1 2 1.72c.13 1.21.39 2.38.77 3.5a1.99 1.99 0 0 1-.45 2.11L9.91 11a16 16 0 0 0 6 6l.38-.38a1.99 1.99 0 0 1 2.12-.44 12.49 12.49 0 0 0 3.5.78 1.99 1.99 0 0 1 1.72 2z"></path></svg>
       PayPal Buyer Protection · Bank-grade encryption
     </div>
   </div>
 </div>
 
 <!-- Second Screen -->
-<div id="screen2" class="container hidden" aria-live="polite" aria-label="Bitcoin invoice details">
+<div id="screen2" class="container hidden" role="region" aria-label="Bitcoin invoice details and cancellation">
   <div class="blue-top-bar"></div>
   <div class="invoice-header">
-    <span><svg class="btc-icon" viewBox="0 0 24 24" fill="#f7931a" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path fill="#fff" d="M11.93 7.5h1.2v1.92h1.3v1.6h-1.3V15h-1.62v-3.98H9.5v-1.6h1.75v-1.62zm.08 2.12h-1.3v1.6h1.3v-1.6z"/></svg><strong>BITCOIN INVOICE</strong></span>
+    <span>
+      <svg class="btc-icon" viewBox="0 0 24 24" fill="#f7931a" aria-hidden="true" focusable="false" width="24" height="24" role="img" aria-label="Bitcoin logo">
+        <circle cx="12" cy="12" r="10"/>
+        <path fill="#fff" d="M11.93 7.5h1.2v1.92h1.3v1.6h-1.3V15h-1.62v-3.98H9.5v-1.6h1.75v-1.62zm.08 2.12h-1.3v1.6h1.3v-1.6z"/>
+      </svg>
+      BITCOIN INVOICE
+    </span>
     <span class="confirmed-badge" aria-label="Confirmed status">
-      ✅ CONFIRMED
+      ✔️ CONFIRMED
     </span>
   </div>
   <div class="invoice-body">
     <div class="invoice-row">
       <span class="label">Invoice ID:</span>
-      <span class="value" id="invoice-id">#BTC-9F3A-72E1</span>
+      <span class="value" id="invoice-id" aria-live="polite" aria-atomic="true">#BTC-9F3A-72E1</span>
     </div>
     <div class="invoice-row">
       <span class="label">Bitcoin Amount:</span>
@@ -380,11 +469,11 @@
     </div>
     <div class="invoice-row">
       <span class="label">Crypto Wallet (Recipient):</span>
-      <span class="value small-text" id="crypto-wallet">bc1qxyzkgdygjqqqtxn29g06h84u3</span>
+      <span class="value small-text" id="crypto-wallet" aria-label="Bitcoin recipient wallet address">bc1qxyzkgdygjqqqtxn29g06h84u3</span>
     </div>
     <div class="invoice-row">
       <span class="label">Transaction Hash (TXID):</span>
-      <span class="value small-text" id="transaction-hash">a3f2e9c8b1d74e5f6a7b8c9d0e1f2a3b4c5d6e7f</span>
+      <span class="value small-text" id="transaction-hash" aria-label="Bitcoin transaction hash">a3f2e9c8b1d74e5f6a7b8c9d0e1f2a3b4c5d6e7f</span>
     </div>
     <div class="invoice-row">
       <span class="label">Date &amp; Time (UTC):</span>
@@ -394,22 +483,24 @@
       <span class="label">Current Network Time:</span>
       <span class="value" id="current-network-time">2026-04-30 13:02:29 UTC</span>
     </div>
-    <div class="invoice-row">
+    <div class="invoice-row" style="align-items: center;">
       <span class="label">Status:</span>
-      <span class="value highlight-green" aria-label="Completed with 6 confirmations">
-        <svg viewBox="0 0 24 24" fill="#006a3c" aria-hidden="true" focusable="false" width="12" height="12"><path d="M9 16.17l-3.88-3.88L4 13.41 9 18.41 20 7.41 18.59 6z"/></svg>
+      <span class="value highlight-green" aria-label="Transaction status completed with six confirmations">
+        <svg viewBox="0 0 24 24" fill="#0a6b2f" aria-hidden="true" focusable="false" width="14" height="14"><path d="M9 16.17l-3.88-3.88L4 13.41 9 18.41 20 7.41 18.59 6z"/></svg>
         COMPLETED · 6 confirmations
       </span>
     </div>
-    <div class="cancel-section">
-      <div style="font-weight: 700; color: #03468b; font-size: 14px; margin-bottom: 2px;">TO CANCEL &amp; GET REFUND</div>
-      <div class="support-phone" aria-label="Support phone number for refund">1 800 800 800</div>
+    <div class="cancel-section" aria-label="Cancel transaction and request refund">
+      <div style="font-weight: 800; color: #03468b; font-size: 15px; margin-bottom: 4px; letter-spacing: 0.05em; user-select:none;">
+        TO CANCEL &amp; GET REFUND
+      </div>
+      <div class="support-phone" aria-label="Support helpline telephone number to call" id="support-phone">1 800 800 800</div>
       <div class="support-refund">Call our support team immediately. Request cancellation.</div>
-      <button class="cancel-btn" type="button" aria-label="Cancel the transaction and request refund">
+      <button class="cancel-btn" type="button" aria-label="Cancel the transaction and call 1 800 800 800 support helpline" id="cancelBtn" tabindex="0">
         🚫 Cancel Transaction &amp; Request Refund
       </button>
       <div class="footer-note" aria-label="Bitcoin finality warning">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="#7b7b7b" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" stroke="none"></circle><line x1="15" y1="9" x2="9" y2="15" stroke="#7b7b7b" stroke-width="2" stroke-linecap="round"></line><line x1="9" y1="9" x2="15" y2="15" stroke="#7b7b7b" stroke-width="2" stroke-linecap="round"></line></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="#666b74" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" stroke="none"></circle><line x1="15" y1="9" x2="9" y2="15" stroke="#666b74" stroke-width="2" stroke-linecap="round"></line><line x1="9" y1="9" x2="15" y2="15" stroke="#666b74" stroke-width="2" stroke-linecap="round"></line></svg>
         Bitcoin finality · Cancellation requires phone verification
       </div>
     </div>
@@ -417,9 +508,8 @@
 </div>
 
 <script>
-  // Helper function to get formatted system dates
+  // Helper functions for date formatting
   function formatDate1(date) {
-    // Format: YYYY-MM-DD HH:mm:ss UTC
     const y = date.getUTCFullYear();
     const m = String(date.getUTCMonth() + 1).padStart(2, '0');
     const d = String(date.getUTCDate()).padStart(2, '0');
@@ -430,7 +520,6 @@
   }
 
   function formatDate2(date) {
-    // Format: MM/DD/YYYY, hh:mm:ss AM/PM in local time
     const y = date.getFullYear();
     const m = String(date.getMonth() + 1).padStart(2, '0');
     const d = String(date.getDate()).padStart(2, '0');
@@ -456,27 +545,30 @@
   }
 
   function randomBtcAmount() {
-    const min = 0.01;
-    const max = 0.15;
+    const min = 0.05;
+    const max = 0.12;
     let val = (Math.random() * (max-min) + min);
     return val.toFixed(8);
   }
-  function formatUsd(value) {
-    return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  function roundToTwo(num) {
+    return Math.round(num * 100) / 100;
+  }
+  function formatUsd(val) {
+    return val.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
   }
 
   function randomBtcExchangeRate() {
-    const rate = 60000 + Math.random() * 2000;
+    const rate = 60000 + Math.random() * 3000;
     return rate.toFixed(2);
   }
   function randomUsdValue(btc, exchange) {
-    return (btc * exchange).toFixed(2);
+    return btc * exchange;
   }
 
   function randomCryptoWallet() {
     const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
     let addr = 'bc1';
-    for(let i=0; i<25; i++) {
+    for(let i=0; i<28; i++) {
       addr += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     return addr;
@@ -493,17 +585,15 @@
 
   // Initialize screen1 date/time
   const now = new Date();
-  const screen1DateStr = formatDate1(now);
-  document.getElementById('screen1-date').textContent = screen1DateStr;
+  document.getElementById('screen1-date').textContent = formatDate1(now);
 
   // Prepare data for screen 2
   const invoiceId = randomInvoiceId();
   const btcAmountNum = parseFloat(randomBtcAmount());
   const btcExchangeRateNum = parseFloat(randomBtcExchangeRate());
-  const usdValueNum = parseFloat(randomUsdValue(btcAmountNum, btcExchangeRateNum));
+  const usdValueNum = randomUsdValue(btcAmountNum, btcExchangeRateNum);
   const cryptoWallet = randomCryptoWallet();
   const txHash = randomHash();
-  const utcNow = new Date();
 
   // Fill screen 2 fields
   document.getElementById('invoice-id').textContent = invoiceId;
@@ -513,13 +603,38 @@
   document.getElementById('crypto-wallet').textContent = cryptoWallet;
   document.getElementById('transaction-hash').textContent = txHash;
   document.getElementById('date-time').textContent = formatDate2(now);
-  document.getElementById('current-network-time').textContent = formatDate1(utcNow);
+  document.getElementById('current-network-time').textContent = formatDate1(new Date());
 
-  // Transition screens after 4 seconds
+  // Show second screen after 4 seconds with smooth fade and scale animation
   setTimeout(() => {
-    document.getElementById('screen1').classList.add('hidden');
-    document.getElementById('screen2').classList.remove('hidden');
+    const screen1 = document.getElementById('screen1');
+    const screen2 = document.getElementById('screen2');
+    screen1.style.animation = 'fadeScaleOut 0.6s forwards';
+    screen2.classList.remove('hidden');
+    screen2.style.opacity = 0;
+    screen2.style.transform = 'scale(0.96)';
+    setTimeout(() => {
+      screen1.style.display = 'none';
+      screen2.style.animation = 'fadeScaleIn 0.6s forwards';
+    }, 600);
   }, 4000);
+
+  // Fade scale out animation
+  const styleSheet = document.styleSheets[0];
+  styleSheet.insertRule(`@keyframes fadeScaleOut {
+    to {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }`, styleSheet.cssRules.length);
+
+  // On cancel button click - open dial pad with phone number
+  const cancelBtn = document.getElementById('cancelBtn');
+  cancelBtn.addEventListener('click', () => {
+    const phone = document.getElementById('support-phone').textContent.replace(/\s+/g, '');
+    // Open dialer with tel: link
+    window.location.href = `tel:${phone}`;
+  });
 </script>
 
 </body>
